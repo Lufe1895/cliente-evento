@@ -1,0 +1,64 @@
+<div class="text-center">
+    <p class="fs-3">Crear un nuevo evento</p>
+</div>
+
+<div class="row">
+    <div class="col-md-10 offset-md-1">
+        <div class="row">
+            <div class="col">
+                <div class="form-group mb-3">
+                    <label for="nombre">Nombre del Evento</label>
+                    <input type="text" placeholder="Nombre del evento" name="nombre" class="form-control" #nombre>
+                </div>
+        
+                <div class="form-group mb-3">
+                    <label for="descripcion">Descripción</label>
+                    <textarea name="descripcion" id="" rows="5" class="form-control" placeholder="Agregue una pequeña descripción sobre lo que tratará su evento, el precio, etc." #descripcion></textarea>
+                </div>
+        
+                <div class="form-group mb-3">
+                    <label for="imagen">Imagen</label>
+                    <input type="text" name="imagen" class="form-control" placeholder="URL de una imagen" #imagen>
+                </div>
+        
+                <div class="form-group mb-3">
+                    <label for="lugar">Lugar del Evento</label>
+                    <input type="text" name="lugar" class="form-control" placeholder="Dirección donde se llevará a cabo el evento" #lugar>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="form-group mb-3">
+                    <label for="categoria">Categoría del Evento</label>
+                    <select name="categoria" id="" class="form-control" #categoria>
+                        <option *ngFor="let c of categorias" value="{{ c }}">{{ c }}</option>
+                    </select>
+                </div>
+        
+                <div class="form-group mb-3">
+                    <label for="fecha">Fecha del Evento</label>
+                    <input type="date" name="fecha" class="form-control" #fecha>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="inicio">Hora de inicio en formato de 24 h</label>
+                    <input type="time" name="inicio" class="form-control" #inicio>
+                </div>
+        
+                <div class="form-group mb-3">
+                    <label for="aforo">Aforo máximo de personas en el evento (0 = Sin límite)</label>
+                    <input type="number" name="aforo" class="form-control" min="0" placeholder="0 = Sin límite" #aforo>
+                </div>
+        
+                <div class="form-group mb-3">
+                    <label for="cover">Cover (0 = Gratis)</label>
+                    <input type="number" name="cover" class="form-control" min="0" placeholder="0 = Gratis" #cover>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center">
+        <button class="btn btn-primary" (click)="crearEvento()">Crear Evento</button>
+    </div>
+</div>

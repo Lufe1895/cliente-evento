@@ -1,0 +1,71 @@
+<div class="bg-dark">
+    <div class="modal-header">
+        <h5 class="modal-title">{{ evento.nombre }}</h5>
+
+        <button type="button" class="btn-close" aria-label="Close" (click)="cerrarModal()"></button>
+    </div>
+
+    <div class="modal-body">
+        <img src="{{ evento.foto }}" alt="sin-foto" class="img-fluid">
+
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td>Descripción</td>
+                    <td>{{ evento.descripcion }}</td>
+                </tr>
+
+                <tr>
+                    <td>Lugar</td>
+                    <td>{{ evento.lugar }}</td>
+                </tr>
+
+                <tr>
+                    <td>Categoría</td>
+                    <td>{{ evento.categoria }}</td>
+                </tr>
+
+                <tr>
+                    <td>Fecha</td>
+                    <td>{{ converter.formatDate(evento.fecha) }}</td>
+                </tr>
+
+                <tr>
+                    <td>Inicio</td>
+                    <td>{{ evento.inicio }} hrs</td>
+                </tr>
+
+                <tr>
+                    <td>Aforo</td>
+                    <td>{{ evento.aforo == 0 ? "Sin límite" : evento.aforo + " personas" }}</td>
+                </tr>
+
+                <tr>
+                    <td>Asistencias</td>
+                    <td>{{ evento.asistencia }}</td>
+                </tr>
+
+                <tr>
+                    <td>Asistencias</td>
+                    <td>${{ converter.formatCosto(evento.cover) }}</td>
+                </tr>
+
+                <tr>
+                    <td>Estrellas</td>
+                    <td>{{ evento.calificacion }}</td>
+                </tr>
+
+                <tr>
+                    <td>Lleno</td>
+                    <td>{{ evento.lleno ? 'Sí' : 'No' }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="cerrarModal()">
+            Cerrar
+        </button>
+    </div>
+</div>

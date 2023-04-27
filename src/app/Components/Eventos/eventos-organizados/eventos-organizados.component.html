@@ -1,0 +1,40 @@
+<div class="text-center">
+    <p class="fs-3">Eventos que he organizado</p>
+</div>
+
+<div class="text-center" *ngIf="Eventos.length == 0">
+    <h5 class="fs-4"><i class="fa-solid fa-ban"></i> No tienes eventos.</h5>
+</div>
+
+<div class="card mb-3 bg-dark" *ngFor="let e of Eventos">
+    <div class="row g-0">
+        <div class="col-md-4">
+            <img src="{{ e.foto }}" class="img-fluid rounded-start" alt="no-foto">
+        </div>
+
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">{{ e.nombre }}</h5>
+                <p class="card-text">{{ e.descripcion }}</p>
+
+                <p class="card-text">
+                    <small>
+                        <span class="fw-bold">Fecha: </span>{{ converter.formatDate(e.fecha) }}
+                    </small>
+
+                    <br />
+
+                    <small>
+                        <span class="fw-bold">Estrellas: </span>
+                        {{ converter.formatCosto(e.calificacion) }} <i class="fa-solid fa-star"></i>
+                    </small>
+                </p>
+
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-danger" (click)="openDetallesModal(e)">Ver Detalles</button>
+                    <button type="button" class="btn btn-warning" (click)="openComentariosModal(e.id)">Ver Comentarios</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

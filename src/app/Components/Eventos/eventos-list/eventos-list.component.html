@@ -1,0 +1,52 @@
+<div class="text-center">
+    <p class="fs-3">Estos son los eventos próximos</p>
+</div>
+
+<div class="card mb-3 bg-dark" *ngFor="let e of eventos">
+    <div class="row g-0">
+        <div class="col-md-4">
+            <img src="{{ e.foto }}" class="img-fluid rounded-start" alt="no-foto">
+        </div>
+
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">{{ e.nombre }}</h5>
+                <p class="card-text">{{ e.descripcion }}</p>
+
+                <p class="card-text">
+                    <small>
+                        <span class="fw-bold">Fecha: </span>{{ converter.formatDate(e.fecha) }}
+                    </small>
+
+                    <br />
+
+                    <small>
+                        <span class="fw-bold">Estrellas: </span>
+                        {{ converter.formatCosto(e.calificacion) }} <i class="fa-solid fa-star"></i>
+                    </small>
+                </p>
+
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-danger" (click)="openDetallesModal(e)">Ver Detalles</button>
+                    <button type="button" class="btn btn-warning" (click)="openComentariosModal(e.id)">Ver Comentarios</button>
+                    <button *ngIf="!e.asistio" type="button" (click)="openAsistenciaModal(e.id)" class="btn btn-success">Asistiré</button>
+                    <button type="button" class="btn btn-primary" (click)="openComentarModal(e.id)">Calificar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="text-center mt-3 mb-3">
+    <div class="btn-group" role="group" aria-label="Basic example">
+        <button *ngIf="!isFirst" type="button" class="btn btn-dark" (click)="decrementPageNumber()">
+            <i class="fa-solid fa-circle-arrow-left"></i>
+            Anterior
+        </button>
+
+        <button *ngIf="!pagina.isLast" type="button" class="btn btn-dark" (click)="incrementPageNumber()">
+            Siguiente
+            <i class="fa-solid fa-circle-arrow-right"></i>
+        </button>
+    </div>
+</div>
